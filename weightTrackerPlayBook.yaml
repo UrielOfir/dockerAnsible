@@ -8,7 +8,7 @@
   tasks:
     - name: Install docker
       script: |
-        curl -fsSL https://get.docker.com -o get-docker.sh
+        wget -fsSL https://get.docker.com -o get-docker.sh
         sh get-docker.sh
 
     # - name: Pull default Docker image
