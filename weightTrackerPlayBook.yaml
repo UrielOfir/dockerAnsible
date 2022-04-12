@@ -19,7 +19,7 @@
     - name: kill previous docker
       shell: |
         if (( $( sudo docker ps -aq | wc -w ) > 0 )); then
-          docker rm -f $(docker ps -aq)
+          sudo docker rm -f $(sudo docker ps -aq)
         fi
 
     - name: run Docker image
