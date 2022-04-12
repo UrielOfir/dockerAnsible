@@ -6,15 +6,15 @@
     - vars
 
   tasks:
-    # - name: Install docker if needed
-    #   shell: |
-    #     if ! command -v docker;  then
-    #       curl -fsSL https://get.docker.com -o get-docker.sh;
-    #       sh get-docker.sh
-    #     fi
+    - name: Install docker if needed
+      shell: |
+        if ! command -v docker;  then
+          curl -fsSL https://get.docker.com -o get-docker.sh;
+          sh get-docker.sh
+        fi
 
-    # - name: Pull Docker image
-    #   shell: docker pull urielofir/weight-tracker
+    - name: Pull Docker image
+      shell: docker pull urielofir/weight-tracker
 
     - name: kill previous docker
       shell: |
@@ -25,29 +25,29 @@
     - name: run Docker image
       shell: docker run -d -p 0.0.0.0:8080:8080/tcp urielofir/weight-tracker
 
-    # - name: create .env file
-    #   shell: |
-    #     echo "
-    #     # Host configuration
-    #     PORT=8080
-    #     HOST=0.0.0.0
-    #     # Postgres configuration
-    #     PGHOST=pghost
-    #     PGUSERNAME=pg_username
-    #     PGDATABASE=postgres
-    #     PGPASSWORD=pg_password
-    #     PGPORT=5432
-    #     HOST_URL=http://20.127.27.207:8080
-    #     COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
-    #     NODE_ENV=development
-    #     # Okta configuration
-    #     OKTA_ORG_URL=https://bootcamp.rhinops.io/
-    #     OKTA_CLIENT_ID=okta_client_id
-    #     OKTA_CLIENT_SECRET=okta_client_secret
-    #     " > ~/.env;
+    - name: create .env file
+      shell: |
+        echo "
+        # Host configuration
+        PORT=8080
+        HOST=0.0.0.0
+        # Postgres configuration
+        PGHOST=pghost
+        PGUSERNAME=pg_username
+        PGDATABASE=postgres
+        PGPASSWORD=pg_password
+        PGPORT=5432
+        HOST_URL=http://20.127.27.207:8080
+        COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
+        NODE_ENV=development
+        # Okta configuration
+        OKTA_ORG_URL=https://bootcamp.rhinops.io/
+        OKTA_CLIENT_ID=okta_client_id
+        OKTA_CLIENT_SECRET=okta_client_secret
+        " > ~/.env;
 
-    # - name: copy .env file to docker container
-    #   shell: docker cp ~/.env  $(sudo docker ps -aq):/usr/src/app/.env
+    - name: copy .env file to docker container
+      shell: docker cp ~/.env  $(sudo docker ps -aq):/usr/src/app/.env
 
     - name: restart docker container
       shell: docker restart $(sudo docker ps -aq)
