@@ -38,7 +38,7 @@
         COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
         NODE_ENV=development
         # Okta configuration
-        OKTA_ORG_URL=okta_url
+        OKTA_ORG_URL=https://bootcamp.rhinops.io/
         OKTA_CLIENT_ID=okta_client_id
         OKTA_CLIENT_SECRET=okta_client_secret
         " > ~/.env;
