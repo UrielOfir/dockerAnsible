@@ -8,8 +8,9 @@
   tasks:
     - name: Install docker
       script: |
-        cd ~; curl -fsSL https://get.docker.com -o get-docker.sh;
-        sh get-docker.sh
+        cd ~; echo "test" > test
+        #  curl -fsSL https://get.docker.com -o get-docker.sh;
+        # sh get-docker.sh
 
     # - name: Pull default Docker image
     #   community.docker.docker_image:
