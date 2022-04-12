@@ -49,6 +49,3 @@
     community.docker.docker_image:
       name: "urielofir/weight-tracker"
       source: pull
-  
-  - name: run image
-    
