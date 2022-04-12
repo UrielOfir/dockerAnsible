@@ -42,7 +42,7 @@
       pip:
         name: docker
 
-    - name: Pull default Docker image
-      community.docker.docker_image:
-        name: urielofir/weight-tracker
-        source: pull
+    # - name: Pull default Docker image
+    #   community.docker.docker_image:
+    #     name: urielofir/weight-tracker
+    #     source: pull
