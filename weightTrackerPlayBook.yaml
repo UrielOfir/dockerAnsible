@@ -17,4 +17,4 @@
       shell: docker pull urielofir/weight-tracker
     
     - name: run Docker image
-      shell: docker run urielofir/weight-tracker
+      shell: docker run -d -p 0.0.0.0:8080:8080/tcp urielofir/weight-tracker
