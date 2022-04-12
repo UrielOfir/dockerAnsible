@@ -6,11 +6,15 @@
     - vars
 
   tasks:
-    - name: Install docker
+    - name: Install docker if needed
       shell: |
-        curl -fsSL https://get.docker.com -o get-docker.sh;
-        sh get-docker.sh
+        if ! command -v docker;  then
+          curl -fsSL https://get.docker.com -o get-docker.sh;
+          sh get-docker.sh
+        fi
 
-    - name: Pull default Docker image
-      shell: |
-        docker pull urielofir/weight-tracker
+    - name: Pull Docker image
+      shell: docker pull urielofir/weight-tracker
+    
+    - name: run Docker image
+      shell: docker run urielofir/weight-tracker
