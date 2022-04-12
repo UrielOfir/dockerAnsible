@@ -18,7 +18,7 @@
     
     - name: kill previous docker
       shell: |
-        if docker ps -aq; then
+        if (( $( sudo docker ps -aq | wc -w ) > 0 )); then
           docker rm -f $(docker ps -aq)
         fi
 
