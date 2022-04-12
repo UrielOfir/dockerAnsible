@@ -14,7 +14,7 @@
         fi
 
     - name: Pull Docker image
-      shell: docker pull $(sudo docker ps -aq)
+      shell: docker pull uriel/weighttracker
     
     - name: kill previous docker
       shell: docker rm -f weight-tracker
