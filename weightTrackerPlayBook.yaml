@@ -30,7 +30,7 @@
         fi
 
     - name: run Docker image
-      shell: docker run -d -p 0.0.0.0:8080:8080/tcp $(registry_url)/weight-tracker
+      shell: docker run -d -p 0.0.0.0:8080:8080/tcp {{registry_url}}/weight-tracker
 
     - name: create .env file
       shell: |
