@@ -61,3 +61,4 @@
 
     - name: npm run initdb
       shell: docker exec $(sudo docker ps -aq) npm run initdb
+      run_once: true
