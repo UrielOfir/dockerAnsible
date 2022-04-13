@@ -15,7 +15,7 @@
 
     - name: connect to Azure container registry
       shell: |
-        docker login -u $(registry_username) -p $(registry_password) $(registry_registry)
+        docker login -u $(registry_username) -p $(registry_password) $(registry_url)
 
     - name: Pull Docker image
       shell: docker pull $(docker_registry)/weight-tracker
