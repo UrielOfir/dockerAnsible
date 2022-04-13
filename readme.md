@@ -1,5 +1,6 @@
 # What is the resoult of this Ansible playbook?
 With this ansible playbook you can run the Weight Tracker app on the azure resources that are built in this Terraform module- https://github.com/UrielOfir/Terraform.
+The app will run as a docker container.
 
 
 1. Connect to the ansible VM you have in your environment. (The user name and password are the same as the one you used to create the VM, you can find them in the `.tfvars` files and your Terraform output.)

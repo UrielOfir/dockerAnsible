@@ -6,19 +6,19 @@
     - vars
 
   tasks:
-    - name: Install docker if needed
-      shell: |
-        if ! command -v docker;  then
-          curl -fsSL https://get.docker.com -o get-docker.sh;
-          sh get-docker.sh
-        fi
+    # - name: Install docker if needed
+    #   shell: |
+    #     if ! command -v docker;  then
+    #       curl -fsSL https://get.docker.com -o get-docker.sh;
+    #       sh get-docker.sh
+    #     fi
 
-    - name: connect to Azure container registry
-      shell: |
-        docker login -u $(registry_username) -p $(registry_password) $(registry_url)
+    # - name: connect to Azure container registry
+    #   shell: |
+    #     docker login -u $(registry_username) -p $(registry_password) $(registry_url)
 
     - name: Pull Docker image
-      shell: docker pull $(docker_registry)/weight-tracker
+      shell: docker pull $(registry_url)/weight-tracker
 
     - name: kill previous docker
       shell: |
@@ -27,7 +27,7 @@
         fi
 
     - name: run Docker image
-      shell: docker run -d -p 0.0.0.0:8080:8080/tcp $(docker_registry)/weight-tracker
+      shell: docker run -d -p 0.0.0.0:8080:8080/tcp $(registry_url)/weight-tracker
 
     - name: create .env file
       shell: |
