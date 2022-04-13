@@ -13,8 +13,12 @@
           sh get-docker.sh
         fi
 
+    - name: connect to Azure container registry
+      shell: |
+        docker login -u $(docker_username) -p $(docker_password) $(docker_registry)
+
     - name: Pull Docker image
-      shell: docker pull urielofir/weight-tracker
+      shell: docker pull $(docker_registry)/weight-tracker
 
     - name: kill previous docker
       shell: |
@@ -23,7 +27,7 @@
         fi
 
     - name: run Docker image
-      shell: docker run -d -p 0.0.0.0:8080:8080/tcp urielofir/weight-tracker
+      shell: docker run -d -p 0.0.0.0:8080:8080/tcp $(docker_registry)/weight-tracker
 
     - name: create .env file
       shell: |
