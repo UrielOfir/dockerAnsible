@@ -39,18 +39,18 @@
         PORT=8080
         HOST=0.0.0.0
         # Postgres configuration
-        PGHOST=pghost
-        PGUSERNAME=pg_username
-        PGDATABASE=postgres
-        PGPASSWORD=pg_password
+        PGHOST={{pghost}}
+        PGUSERNAME={{pg_username}}
+        PGDATABASE={{postgres}}
+        PGPASSWORD={{pg_password}}
         PGPORT=5432
-        HOST_URL=http://20.127.27.207:8080
+        HOST_URL=http://{{20.127.27.207}}:8080
         COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
         NODE_ENV=development
         # Okta configuration
-        OKTA_ORG_URL=https://bootcamp.rhinops.io/
-        OKTA_CLIENT_ID=okta_client_id
-        OKTA_CLIENT_SECRET=okta_client_secret
+        OKTA_ORG_URL={{okta_url}}
+        OKTA_CLIENT_ID={{okta_client_id}}
+        OKTA_CLIENT_SECRET={{okta_client_secret}}
         " > ~/.env;
 
     - name: copy .env file to docker container
