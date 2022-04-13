@@ -41,10 +41,10 @@
         # Postgres configuration
         PGHOST={{pghost}}
         PGUSERNAME={{pg_username}}
-        PGDATABASE={{postgres}}
+        PGDATABASE=postgres
         PGPASSWORD={{pg_password}}
         PGPORT=5432
-        HOST_URL=http://{{20.127.27.207}}:8080
+        HOST_URL=http://{{LB_ip}}:8080
         COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
         NODE_ENV=development
         # Okta configuration
