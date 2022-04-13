@@ -29,9 +29,6 @@
          docker rm -f $(docker ps -aq)
         fi
 
-    - name: run Docker image
-      shell: docker run -d -p 0.0.0.0:8080:8080/tcp {{registry_url}}/weight-tracker
-
     - name: create .env file
       shell: |
         echo "
@@ -53,8 +50,14 @@
         OKTA_CLIENT_SECRET={{okta_client_secret}}
         " > ~/.env;
 
+    - name: run Docker image
+      shell: docker run -d -p 0.0.0.0:8080:8080/tcp {{registry_url}}/weight-tracker
+
     - name: copy .env file to docker container
       shell: docker cp ~/.env  $(sudo docker ps -aq):/usr/src/app/.env
 
     - name: restart docker container
       shell: docker restart $(sudo docker ps -aq)
+
+    - name: npm run initdb
+      shell: docker exec $(sudo docker ps -aq) npm run initdb
