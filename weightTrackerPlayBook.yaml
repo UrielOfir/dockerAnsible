@@ -15,13 +15,13 @@
 
     - name: connect to Azure container registry
       shell: |
-        docker login -u {{registry_username}} -p ${{registry_password}} ${{registry_url}}
+        docker login -u {{registry_username}} -p {{registry_password}} {{registry_url}}
 
     - name: test 
       shell: echo $
 
     - name: Pull Docker image
-      shell: "docker pull ${{registry_url}}/weight-tracker"
+      shell: "docker pull {{registry_url}}/weight-tracker"
 
     - name: kill previous docker
       shell: |
