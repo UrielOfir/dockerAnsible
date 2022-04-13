@@ -6,19 +6,22 @@
     - vars
 
   tasks:
-    # - name: Install docker if needed
-    #   shell: |
-    #     if ! command -v docker;  then
-    #       curl -fsSL https://get.docker.com -o get-docker.sh;
-    #       sh get-docker.sh
-    #     fi
+    - name: Install docker if needed
+      shell: |
+        if ! command -v docker;  then
+          curl -fsSL https://get.docker.com -o get-docker.sh;
+          sh get-docker.sh
+        fi
 
-    # - name: connect to Azure container registry
-    #   shell: |
-    #     docker login -u $(registry_username) -p $(registry_password) $(registry_url)
+    - name: connect to Azure container registry
+      shell: |
+        docker login -u {{registry_username}} -p ${{registry_password}} ${{registry_url}}
+
+    - name: test 
+      shell: echo $
 
     - name: Pull Docker image
-      shell: "docker pull $(registry_url)/weight-tracker"
+      shell: "docker pull ${{registry_url}}/weight-tracker"
 
     - name: kill previous docker
       shell: |
